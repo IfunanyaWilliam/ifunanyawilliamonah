@@ -1,8 +1,61 @@
-﻿@{
+﻿@model IEnumerable<ifunanyawilliamonah.Models.Project>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<section class="body text-center">
+    <section>
+        <div class="emeka-container"><img src="~/images/IFUNANYA_ONAH2.jpg" alt="" class="emeka"></div>
+        <div class="child1">
+            <p>Hi there, I am Ifunanya</p>
+        </div>
+        <div class="child2">
+            <p>
+                I create software products and solutions using C# and javascript
+            </p>
+        </div>
+        
+        <div>
+            <button class="child4"><a asp-controller="Contact" asp-action="Index" class="connect"> Send me a Message</a></button>
+        </div>
+    </section>
+    <section class="section2">
+        <div>
+            <p class="project">projects</p>
+            <p class="writeup">
+                Here are some of the projects i have worked on and i'm glad
+                to share them with you.
+            </p>
+        </div>
+        @if(Model.Count() > 0)
+        {
+            <section class="projects">
+                @foreach (var item in Model)
+                {
+                    <div class="project-container">
+                        <img src="~/images/@item.Image" class="project-image" alt="" srcset="">
+                        <div class="project-writeup @item.BackgroundColor">
+                            <p class="title">@item.Title</p>
+                            <p>@item.Description</p>
+                            <p>
+                                <a href="@item.Link" target="_blank">View app</a>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </section>
+        }
+        else
+        {
+            <small class="mt-5 text-center">No projects added yet</small>
+        }
+        <div style="margin-top: 5vh;">
+            <button class="child4"><a href="https://drive.google.com/file/d/10rVjEX0ddHPd03k6kyWjQx1Qx5Sa9UfI/view?usp=sharing" target="_blank" class="connect">Download Resume</a></button>
+        </div>
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/william-ifunanya-onah/" target="_blank"><img src="~/images/linkedin.png" alt="" srcset=""></a>
+            <a href="https://github.com/IfunanyaWilliam" target="_blank"><img src="~/images/github.png" class="github" alt="" srcset=""></a>
+        </div>
+    </section>
+</section>

@@ -1,3 +1,5 @@
+using ifunanyawilliamonah.Repositories;
+using ifunanyawilliamonah.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +25,11 @@ namespace ifunanyawilliamonah
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<Repository>();
+
+            // for emails service
+            services.AddScoped<EmailService>();
+            services.Configure<MailjetOptions>(Configuration.GetSection("mailjetOptions"));
             services.AddControllersWithViews();
         }
 

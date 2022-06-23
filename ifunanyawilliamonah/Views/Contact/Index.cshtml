@@ -1,0 +1,26 @@
+﻿@model ifunanyawilliamonah.Models.EmailModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<section>
+    <p style="font-weight: bold;">
+        Can I get to Know you too?
+    </p>
+    <form asp-action="Index" method="post">
+        <div class="email-title-container">
+            <label asp-for="Title" class="form-title-label"></label>
+            <input asp-for="Title" type="text" class="form-title" placeholder="Email Title">
+        </div>
+        <div class="email-body-container">
+            <label asp-for="Body" class="form-body-label"></label>
+            <textarea asp-for="Body" name="Body" id="" cols="50" rows="10" placeholder="what do you need"></textarea>
+        </div>
+        <div class="email-submit-container">
+            <button type="submit" class="email-button">Send Mail</button>
+        </div>
+    </form>
+
+</section>

@@ -1,4 +1,5 @@
 ﻿using ifunanyawilliamonah.Models;
+using ifunanyawilliamonah.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +13,19 @@ namespace ifunanyawilliamonah.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly Repository _projectRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, Repository projectRepository)
         {
             _logger = logger;
+            _projectRepository = projectRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var myProjects = _projectRepository.projects;
+
+            return View(myProjects);
         }
 
         public IActionResult Privacy()
